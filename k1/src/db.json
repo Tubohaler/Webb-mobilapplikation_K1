@@ -1,0 +1,53 @@
+{
+  "projects": [
+    { "id": 1, "name": "Bygga hemsida", "color": "#4E0E9F" },
+    { "id": 2, "name": "Renovera huset", "color": "#4E0E9F" }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "projectId": 1,
+      "title": "Hitta en webbdesigner"
+    },
+    {
+      "id": 2,
+      "projectId": 1,
+      "title": "Städa förrådet"
+    },
+    {
+      "id": 3,
+      "projectId": 2,
+      "title": "Hälsa på faster Ulla-Britt"
+    },
+    {
+      "id": 4,
+      "projectId": 2,
+      "title": "handla fredagsmys"
+    },
+    {
+      "id": 5,
+      "projectId": 2,
+      "title": "ringa skolan"
+    }
+  ],
+  "timelogs": [
+    {
+      "id": "firstTask",
+      "taskId": 1,
+      "start": "2022-10-12T10:49:33.081Z",
+      "end": "2020-10-12T10:49:33.081Z"
+    },
+    {
+      "id": "secondTask",
+      "taskId": 2,
+      "start": "2022-10-12T10:49:33.081Z",
+      "end": "2021-10-12T10:49:33.081Z"
+    },
+    {
+      "id": "thirdTask",
+      "taskId": 3,
+      "start": "2022-10-12T10:49:33.081Z",
+      "end": "2022-10-12T10:49:33.081Z"
+    }
+  ]
+}
