@@ -33,7 +33,7 @@ function Navbar() {
       <Link to="calender">
         <StyledImage src={calender} />
       </Link>
-      <Link to="overview">
+      <Link to="overview/projects">
         <StyledImage src={overview} />
       </Link>
     </ProjectNav>

@@ -5,6 +5,8 @@ import App from "./App";
 import TimeKeeper from "./pages/TimeKeeper";
 import Calender from "./pages/Calender";
 import Overview from "./pages/Overview";
+import Projects from "./pages/Projects";
+import Tasks from "./pages/Tasks";
 
 import "./index.css";
 
@@ -24,6 +26,16 @@ const router = createBrowserRouter([
       {
         path: "overview",
         element: <Overview />,
+        children: [
+          {
+            path: "projects",
+            element: <Projects />,
+          },
+          {
+            path: "tasks",
+            element: <Tasks />,
+          },
+        ],
       },
     ],
   },

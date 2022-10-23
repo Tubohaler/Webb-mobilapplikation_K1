@@ -1,7 +1,15 @@
 {
   "projects": [
-    { "id": 1, "name": "Bygga hemsida", "color": "#4E0E9F" },
-    { "id": 2, "name": "Renovera huset", "color": "#4E0E9F" }
+    {
+      "id": 1,
+      "name": "Bygga hemsida",
+      "color": "#4E0E9F"
+    },
+    {
+      "id": 2,
+      "name": "Renovera huset",
+      "color": "#4E0E9F"
+    }
   ],
   "tasks": [
     {
@@ -28,6 +36,19 @@
       "id": 5,
       "projectId": 2,
       "title": "ringa skolan"
+    },
+    {
+      "title": "Köpa snus",
+      "projectId": 1,
+      "id": 6
+    },
+    {
+      "title": "asd",
+      "id": 7
+    },
+    {
+      "title": "asdfffff",
+      "id": 8
     }
   ],
   "timelogs": [

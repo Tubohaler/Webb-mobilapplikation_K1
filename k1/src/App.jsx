@@ -12,15 +12,10 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getData();
+    // getData();
     navigate("timer");
   }, []);
 
-  const getData = async () => {
-    const { data } = await axios.get("http://localhost:3000/timelogs");
-    setTodos(data);
-  };
-  console.log(todos);
   return (
     <div className="App">
       <Outlet />
