@@ -1,13 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
-import { loader as rootLoader } from "./App";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-import Index from "./routes/Index";
 import TimeKeeper from "./pages/TimeKeeper";
 import Calender from "./pages/Calender";
 import Overview from "./pages/Overview";
-import ErrorPage from "./routes/ErrorPage";
 
 import "./index.css";
 
@@ -17,25 +14,23 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/timer",
+        path: "timer",
         element: <TimeKeeper />,
       },
       {
-        path: "/calender",
+        path: "calender",
         element: <Calender />,
       },
       {
-        path: "/overview",
+        path: "overview",
         element: <Overview />,
       },
     ],
   },
 ]);
 
-ReactDOM.createRoot(
-  document.getElementById("root").render(
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
-  )
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
 );

@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import Navbar from "./components/layout/Navbar";
 
 import "./App.css";
 
-export async function loader() {
-  const { data } = await axios.get("http://localhost:3000/timelogs");
-  return { data };
-}
-
 function App() {
   const [todos, setTodos] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getData();
+    navigate("timer");
   }, []);
 
   const getData = async () => {

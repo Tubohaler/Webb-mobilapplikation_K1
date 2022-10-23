@@ -1,7 +1,8 @@
 import React from "react";
-import clock from "../../assets/clock.png";
-import calender from "../../assets/calender.png";
-import overview from "../../assets/overview.png";
+import clock from "../../assets/clock.svg";
+import calender from "../../assets/calender.svg";
+import overview from "../../assets/overview.svg";
+import { Link } from "react-router-dom";
 
 import styled from "styled-components";
 
@@ -16,6 +17,7 @@ const ProjectNav = styled.nav`
   background-color: #ef6e26;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
+  align-items: center;
 `;
 
 const StyledImage = styled.img`
@@ -25,9 +27,15 @@ const StyledImage = styled.img`
 function Navbar() {
   return (
     <ProjectNav>
-      <StyledImage src={clock} />
-      <StyledImage src={calender} />
-      <StyledImage src={overview} />
+      <Link to="timer">
+        <StyledImage src={clock} />
+      </Link>
+      <Link to="calender">
+        <StyledImage src={calender} />
+      </Link>
+      <Link to="overview">
+        <StyledImage src={overview} />
+      </Link>
     </ProjectNav>
   );
 }
