@@ -1,10 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
-import Tasks from "./Tasks";
 
 const HeaderDiv = styled.header`
   position: fixed;
@@ -54,8 +52,13 @@ const TodoButton = styled.button`
 
 function Projects() {
   const [input, setInput] = useState("");
-  const [todos, setTodos] = useState([]);
   const [list, setList] = useState([]);
+
+  const navigate = useNavigate();
+  const routeChange = () => {
+    let path = "../tasks";
+    navigate(path);
+  };
 
   useEffect(() => {
     getData();
@@ -88,11 +91,7 @@ function Projects() {
       </HeaderDiv>
       <ButtonDiv>
         <Buttons disabled>Projekt</Buttons>
-        <Link to={"../tasks"}>
-          {" "}
-          // ta bort Links
-          <Buttons>Todos</Buttons>
-        </Link>
+        <Buttons onClick={routeChange}>Todos</Buttons>
       </ButtonDiv>
       <section>
         <InputField

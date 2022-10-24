@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -63,7 +63,12 @@ const TodoList = styled.ul`
 function Tasks() {
   const [input, setInput] = useState("");
   const [todos, setTodos] = useState([]);
-  const [list, setList] = useState([]);
+
+  const navigate = useNavigate();
+  const routeChange = () => {
+    let path = "../projects";
+    navigate(path);
+  };
 
   useEffect(() => {
     getData();
@@ -94,9 +99,7 @@ function Tasks() {
         <ModuleName>Todos</ModuleName>
       </HeaderDiv>
       <ButtonDiv>
-        <Link to={"../projects"}>
-          <Buttons>Projekt</Buttons>
-        </Link>
+        <Buttons onClick={routeChange}>Projekt</Buttons>
         <Buttons disabled>Todos</Buttons>
       </ButtonDiv>
       <section>
