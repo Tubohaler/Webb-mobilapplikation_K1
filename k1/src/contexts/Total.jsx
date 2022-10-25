@@ -5,6 +5,7 @@ export const TotalContext = createContext();
 
 export const TotalProvider = ({ children }) => {
   const [projects, setProjects] = useState([]);
+  // const [todos, setTodos] = useState([]);
 
   const getData = async () => {
     const { data } = await axios.get("http://localhost:3000/projects");
@@ -12,12 +13,19 @@ export const TotalProvider = ({ children }) => {
     setProjects(data);
   };
 
+  const deleteProject = async (id) => {
+    await axios.delete(`http://localhost:3000/projects/${id}`);
+    getData();
+  };
+
   useEffect(() => {
     getData();
   }, []);
 
   return (
-    <TotalContext.Provider value={{ projects, setProjects, getData }}>
+    <TotalContext.Provider
+      value={{ projects, setProjects, getData, deleteProject }}
+    >
       {children}
     </TotalContext.Provider>
   );

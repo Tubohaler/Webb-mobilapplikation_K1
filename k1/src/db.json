@@ -4,11 +4,6 @@
       "id": 1,
       "name": "Bygga hemsida",
       "color": "#4E0E9F"
-    },
-    {
-      "id": 2,
-      "name": "Renovera huset",
-      "color": "#4E0E9F"
     }
   ],
   "tasks": [
@@ -21,21 +16,6 @@
       "id": 2,
       "projectId": 1,
       "title": "Städa förrådet"
-    },
-    {
-      "id": 3,
-      "projectId": 2,
-      "title": "Hälsa på faster Ulla-Britt"
-    },
-    {
-      "id": 4,
-      "projectId": 2,
-      "title": "handla fredagsmys"
-    },
-    {
-      "id": 5,
-      "projectId": 2,
-      "title": "ringa skolan"
     },
     {
       "title": "Köpa snus",

@@ -55,7 +55,7 @@ function Projects() {
   const [input, setInput] = useState("");
   //   const [list, setList] = useState([]);
 
-  const { projects, getData } = useTotals();
+  const { projects, getData, deleteProject } = useTotals();
 
   const navigate = useNavigate();
   const routeChange = () => {
@@ -72,10 +72,10 @@ function Projects() {
   //     console.log(data);
   //   };
 
-  const todoDelete = async (id) => {
-    await axios.delete(`http://localhost:3000/projects/${id}`);
-    getData();
-  };
+  // const deleteProject = async (id) => {
+  //   await axios.delete(`http://localhost:3000/projects/${id}`);
+  //   getData();
+  // };
 
   const postData = async () => {
     const { data } = await axios.post("http://localhost:3000/projects", {
@@ -106,7 +106,7 @@ function Projects() {
           {projects.map((project) => (
             <li key={project.id}>
               {project.name}
-              <TodoButton onClick={() => todoDelete(project.id)}>
+              <TodoButton onClick={() => deleteProject(project.id)}>
                 Del
               </TodoButton>
             </li>
