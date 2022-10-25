@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import axios from "axios";
+import { useTotals } from "../contexts/Total";
 
 const HeaderDiv = styled.header`
   position: fixed;
@@ -61,8 +61,8 @@ const TodoList = styled.ul`
 `;
 
 function Tasks() {
-  const [input, setInput] = useState("");
-  const [todos, setTodos] = useState([]);
+  const { input, setInput, todos, setTodos, getTodos, deleteTodo, postTodo } =
+    useTotals();
 
   const navigate = useNavigate();
   const routeChange = () => {
@@ -71,28 +71,9 @@ function Tasks() {
   };
 
   useEffect(() => {
-    getData();
+    getTodos();
   }, []);
 
-  const getData = async () => {
-    const { data } = await axios.get("http://localhost:3000/tasks");
-    console.log(data);
-    setTodos(data);
-  };
-
-  const todoDelete = async (id) => {
-    await axios.delete(`http://localhost:3000/projects/${id}`);
-    getData();
-  };
-
-  const postData = async () => {
-    const { data } = await axios.post("http://localhost:3000/tasks", {
-      title: input,
-    });
-    console.log(data);
-    getData();
-  };
-  console.log(todos);
   return (
     <div>
       <HeaderDiv>
@@ -108,12 +89,12 @@ function Tasks() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <TodoButton onClick={postData}>Add</TodoButton>
+        <TodoButton onClick={postTodo}>Add</TodoButton>
         <TodoList>
           {todos.map((todo) => (
             <li key={todo.id}>
               {todo.title}
-              <TodoButton onClick={todoDelete}>Del</TodoButton>
+              <TodoButton onClick={() => deleteTodo(todo.id)}>Del</TodoButton>
             </li>
           ))}
         </TodoList>

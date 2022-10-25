@@ -1,8 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useEffect } from "react";
 import { useTotals } from "../contexts/Total";
 
 const HeaderDiv = styled.header`
@@ -52,10 +51,8 @@ const TodoButton = styled.button`
 `;
 
 function Projects() {
-  const [input, setInput] = useState("");
-  //   const [list, setList] = useState([]);
-
-  const { projects, getData, deleteProject } = useTotals();
+  const { projects, getProjects, deleteProject, addProject, input, setInput } =
+    useTotals();
 
   const navigate = useNavigate();
   const routeChange = () => {
@@ -64,27 +61,8 @@ function Projects() {
   };
 
   useEffect(() => {
-    getData();
+    getProjects();
   }, []);
-
-  //   const getData = async () => {
-  //     const { data } = await axios.get("http://localhost:3000/projects");
-  //     console.log(data);
-  //   };
-
-  // const deleteProject = async (id) => {
-  //   await axios.delete(`http://localhost:3000/projects/${id}`);
-  //   getData();
-  // };
-
-  const postData = async () => {
-    const { data } = await axios.post("http://localhost:3000/projects", {
-      name: input,
-      color: "#4E0E9F",
-    });
-    console.log(data);
-    getData();
-  };
 
   return (
     <div>
@@ -101,7 +79,7 @@ function Projects() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <TodoButton onClick={postData}>Add</TodoButton>
+        <TodoButton onClick={addProject}>Add</TodoButton>
         <ul>
           {projects.map((project) => (
             <li key={project.id}>

@@ -4,6 +4,11 @@
       "id": 1,
       "name": "Bygga hemsida",
       "color": "#4E0E9F"
+    },
+    {
+      "name": "gandalf",
+      "color": "#4E0E9F",
+      "id": 2
     }
   ],
   "tasks": [
@@ -21,14 +26,6 @@
       "title": "Köpa snus",
       "projectId": 1,
       "id": 6
-    },
-    {
-      "title": "asd",
-      "id": 7
-    },
-    {
-      "title": "asdfffff",
-      "id": 8
     }
   ],
   "timelogs": [
@@ -43,12 +40,6 @@
       "taskId": 2,
       "start": "2022-10-12T10:49:33.081Z",
       "end": "2021-10-12T10:49:33.081Z"
-    },
-    {
-      "id": "thirdTask",
-      "taskId": 3,
-      "start": "2022-10-12T10:49:33.081Z",
-      "end": "2022-10-12T10:49:33.081Z"
     }
   ]
 }

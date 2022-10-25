@@ -4,27 +4,71 @@ import axios from "axios";
 export const TotalContext = createContext();
 
 export const TotalProvider = ({ children }) => {
+  const [input, setInput] = useState("");
   const [projects, setProjects] = useState([]);
-  // const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([]);
 
-  const getData = async () => {
+  //PROJECTS
+  const getProjects = async () => {
     const { data } = await axios.get("http://localhost:3000/projects");
-    console.log(data);
     setProjects(data);
   };
 
   const deleteProject = async (id) => {
     await axios.delete(`http://localhost:3000/projects/${id}`);
-    getData();
+    getProjects();
   };
 
+  const addProject = async () => {
+    const { data } = await axios.post("http://localhost:3000/projects", {
+      name: input,
+      color: "#4E0E9F",
+    });
+    console.log(data);
+    getProjects();
+  };
+
+  // TODOS
+  const getTodos = async () => {
+    const { data } = await axios.get("http://localhost:3000/tasks");
+    console.log(data);
+    setTodos(data);
+  };
+
+  const deleteTodo = async (id) => {
+    await axios.delete(`http://localhost:3000/tasks/${id}`);
+    getTodos();
+  };
+
+  const postTodo = async () => {
+    const { data } = await axios.post("http://localhost:3000/tasks", {
+      title: input,
+    });
+    console.log(data);
+    getTodos();
+  };
+  console.log(todos);
+
   useEffect(() => {
-    getData();
+    getProjects();
   }, []);
 
   return (
     <TotalContext.Provider
-      value={{ projects, setProjects, getData, deleteProject }}
+      value={{
+        projects,
+        setProjects,
+        getProjects,
+        deleteProject,
+        addProject,
+        input,
+        setInput,
+        todos,
+        setTodos,
+        getTodos,
+        deleteTodo,
+        postTodo,
+      }}
     >
       {children}
     </TotalContext.Provider>
