@@ -24,6 +24,9 @@ function TimeKeeper() {
       <HeaderDiv>
         <ModuleName>Timer</ModuleName>
       </HeaderDiv>
+      <section>
+        <div></div>
+      </section>
     </div>
   );
 }

@@ -4,11 +4,6 @@
       "id": 1,
       "name": "Bygga hemsida",
       "color": "#4E0E9F"
-    },
-    {
-      "name": "gandalf",
-      "color": "#4E0E9F",
-      "id": 2
     }
   ],
   "tasks": [
@@ -21,11 +16,6 @@
       "id": 2,
       "projectId": 1,
       "title": "Städa förrådet"
-    },
-    {
-      "title": "Köpa snus",
-      "projectId": 1,
-      "id": 6
     }
   ],
   "timelogs": [
