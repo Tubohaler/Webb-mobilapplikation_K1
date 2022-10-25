@@ -1,8 +1,9 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useTotals } from "../contexts/Total";
 
 const HeaderDiv = styled.header`
   position: fixed;
@@ -52,7 +53,9 @@ const TodoButton = styled.button`
 
 function Projects() {
   const [input, setInput] = useState("");
-  const [list, setList] = useState([]);
+  //   const [list, setList] = useState([]);
+
+  const { projects, getData } = useTotals();
 
   const navigate = useNavigate();
   const routeChange = () => {
@@ -64,11 +67,10 @@ function Projects() {
     getData();
   }, []);
 
-  const getData = async () => {
-    const { data } = await axios.get("http://localhost:3000/projects");
-    console.log(data);
-    setList(data);
-  };
+  //   const getData = async () => {
+  //     const { data } = await axios.get("http://localhost:3000/projects");
+  //     console.log(data);
+  //   };
 
   const todoDelete = async (id) => {
     await axios.delete(`http://localhost:3000/projects/${id}`);
@@ -101,10 +103,12 @@ function Projects() {
         />
         <TodoButton onClick={postData}>Add</TodoButton>
         <ul>
-          {list.map((todo) => (
-            <li key={todo.id}>
-              {todo.name}
-              <TodoButton onClick={todoDelete}>Del</TodoButton>
+          {projects.map((project) => (
+            <li key={project.id}>
+              {project.name}
+              <TodoButton onClick={() => todoDelete(project.id)}>
+                Del
+              </TodoButton>
             </li>
           ))}
         </ul>

@@ -9,6 +9,7 @@ import Projects from "./pages/Projects";
 import Tasks from "./pages/Tasks";
 
 import "./index.css";
+import { TotalProvider } from "./contexts/Total";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <TotalProvider>
+      <RouterProvider router={router} />
+    </TotalProvider>
   </React.StrictMode>
 );
