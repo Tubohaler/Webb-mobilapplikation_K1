@@ -40,10 +40,16 @@ const TodoList = styled.ul`
 `;
 
 function Calender() {
-  const { todos, setTodos, getTodos, deleteTodo } = useTotals();
-
-  const [startDate, setStartDate] = useState(new Date());
-  const [date, setDate] = useState(new Date());
+  const {
+    todos,
+    setTodos,
+    getTodos,
+    deleteTodo,
+    startDate,
+    setStartDate,
+    date,
+    setDate,
+  } = useTotals();
 
   const onChange = (date) => {
     setDate(date);

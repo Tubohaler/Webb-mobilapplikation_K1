@@ -7,6 +7,8 @@ export const TotalProvider = ({ children }) => {
   const [input, setInput] = useState("");
   const [projects, setProjects] = useState([]);
   const [todos, setTodos] = useState([]);
+  const [startDate, setStartDate] = useState(new Date());
+  const [date, setDate] = useState(new Date());
 
   //PROJECTS
   const getProjects = async () => {
@@ -44,10 +46,10 @@ export const TotalProvider = ({ children }) => {
     const { data } = await axios.post("http://localhost:3000/tasks", {
       title: input,
     });
-    console.log(data);
     getTodos();
   };
-  console.log(todos);
+
+  // Calender
 
   useEffect(() => {
     getProjects();
@@ -68,6 +70,10 @@ export const TotalProvider = ({ children }) => {
         getTodos,
         deleteTodo,
         postTodo,
+        startDate,
+        setStartDate,
+        date,
+        setDate,
       }}
     >
       {children}

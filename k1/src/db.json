@@ -4,6 +4,11 @@
       "id": 1,
       "name": "Bygga hemsida",
       "color": "#4E0E9F"
+    },
+    {
+      "name": "Skaffa F-skattesedel",
+      "color": "#4E0E9F",
+      "id": 2
     }
   ],
   "tasks": [
