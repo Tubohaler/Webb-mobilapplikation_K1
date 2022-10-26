@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 const HeaderDiv = styled.header`
@@ -18,38 +18,31 @@ const ModuleName = styled.h1`
   margin-left: 0.7em;
 `;
 
-const TimerDisplay = styled.p`
-  size: 1em;
+const TimerDiv = styled.div`
+  width: 370px;
+  margin: 0 auto;
+  text-align: center;
 `;
 
-//REDUCER
-// const initialState = {
-//   time: 0,
-//   running: false,
-// };
+const TimerButtons = styled.button`
+  margin-left: 8px;
+  font-size: 16px;
+  background-color: rgb(217, 60, 35);
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+`;
 
-// function timeReducer(state, action) {
-//   switch (action.type) {
-//     case "start":
-//       return { ...state, running: true };
-//     case "stop":
-//       return { ...state, running: false };
-//     case "reset":
-//       return { ...state, time: 0 };
-//     case "tick":
-//       return { ...state, time: state.time + 1 };
-//     default:
-//       throw new Error();
-//   }
-// }
+const TimerSpan = styled.button`
+  font-size: 1.7em;
+`;
 
 function TimeKeeper() {
-  // const [state, dispatch] = useReducer(timeReducer, initialState);
-  // const intervalRef = useRef();
   const [time, setTime] = React.useState(0);
   const [timerOn, setTimerOn] = React.useState(false);
-  // useEffect(() => {
-  //   if (!state.running) return;
+
   useEffect(() => {
     let interval = null;
 
@@ -62,12 +55,6 @@ function TimeKeeper() {
     }
     return () => clearInterval(interval);
   }, [timerOn]);
-  //   intervalRef.current = setInterval(() => dispatch({ type: "tick" }), 1000);
-  //   return () => {
-  //     clearInterval(intervalRef.current);
-  //     intervalRef.current = null;
-  //   };
-  // }, [state.running]);
 
   return (
     <div>
@@ -75,26 +62,26 @@ function TimeKeeper() {
         <ModuleName>Timer</ModuleName>
       </HeaderDiv>
       <section>
-        {/* <TimerDisplay>{state.time}</TimerDisplay> */}
-        {/* <button onClick={() => dispatch({ type: "start" })}>start</button>
-        <button onClick={() => dispatch({ type: "stop" })}>stop</button>
-        <button onClick={() => dispatch({ type: "reset" })}>reset</button> */}
-        <div id="display">
-          <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
-          <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
-          <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
-        </div>
+        <TimerDiv>
+          <TimerSpan>
+            {("0" + Math.floor((time / 60000) % 60)).slice(-2)}:
+          </TimerSpan>
+          <TimerSpan>
+            {("0" + Math.floor((time / 1000) % 60)).slice(-2)}:
+          </TimerSpan>
+          <TimerSpan>{("0" + ((time / 10) % 100)).slice(-2)}</TimerSpan>
+        </TimerDiv>
 
         <div id="buttons">
           {!timerOn && time === 0 && (
-            <button onClick={() => setTimerOn(true)}>Start</button>
+            <TimerButtons onClick={() => setTimerOn(true)}>Start</TimerButtons>
           )}
           {timerOn && <button onClick={() => setTimerOn(false)}>Stop</button>}
           {!timerOn && time > 0 && (
-            <button onClick={() => setTime(0)}>Reset</button>
+            <TimerButtons onClick={() => setTime(0)}>Reset</TimerButtons>
           )}
           {!timerOn && time > 0 && (
-            <button onClick={() => setTimerOn(true)}>Resume</button>
+            <TimerButtons onClick={() => setTimerOn(true)}>Resume</TimerButtons>
           )}
         </div>
       </section>
