@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 
+import { useTotals } from "../contexts/Total";
+
 const HeaderDiv = styled.header`
   position: fixed;
   top: 0;
@@ -22,6 +24,7 @@ const TimerDiv = styled.div`
   width: 370px;
   margin: 0 auto;
   text-align: center;
+  margin-top: -13em;
 `;
 
 const TimerButtons = styled.button`
@@ -40,8 +43,7 @@ const TimerSpan = styled.button`
 `;
 
 function TimeKeeper() {
-  const [time, setTime] = React.useState(0);
-  const [timerOn, setTimerOn] = React.useState(false);
+  const { time, setTime, timerOn, setTimerOn } = useTotals();
 
   useEffect(() => {
     let interval = null;
@@ -85,6 +87,10 @@ function TimeKeeper() {
           )}
         </div>
       </section>
+      <h2>Todos</h2>
+      <ul>
+        <li></li>
+      </ul>
     </div>
   );
 }

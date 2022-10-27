@@ -9,6 +9,16 @@
       "name": "Skaffa F-skattesedel",
       "color": "#4E0E9F",
       "id": 2
+    },
+    {
+      "name": "sd",
+      "color": "#4E0E9F",
+      "id": 3
+    },
+    {
+      "name": "sd",
+      "color": "#4E0E9F",
+      "id": 4
     }
   ],
   "tasks": [

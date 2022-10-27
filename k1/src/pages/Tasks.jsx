@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+
 import { useTotals } from "../contexts/Total";
+import Modal from "../components/layout/Modal";
+
+import styled from "styled-components";
 
 const HeaderDiv = styled.header`
   position: fixed;
@@ -21,7 +24,7 @@ const ModuleName = styled.h1`
 
 const ButtonDiv = styled.div`
   display: flex;
-  margin-top: -14em;
+  margin-top: -13rem;
 `;
 
 const Buttons = styled.button`
@@ -60,9 +63,39 @@ const TodoList = styled.ul`
   height: 19em;
 `;
 
+const TodoListBar = styled.li`
+  background-color: white;
+  color: black;
+  border-radius: 4px;
+  border-radius: 4px;
+  margin: 2px;
+`;
+
+const Button = styled.button`
+  margin-left: 2em;
+  background: rgba(255, 53, 41, 0.56);
+  color: white;
+  font-size: 1em;
+  margin: 10px;
+  padding: 5px 10px;
+  border: 2px solid #7b2cbf;
+  border-radius: 3px;
+  cursor: pointer;
+`;
+
 function Tasks() {
-  const { input, setInput, todos, setTodos, getTodos, deleteTodo, postTodo } =
-    useTotals();
+  const {
+    input,
+    setInput,
+    todos,
+    setTodos,
+    getTodos,
+    deleteTodo,
+    postTodo,
+    active,
+    setActive,
+    addProject,
+  } = useTotals();
 
   const navigate = useNavigate();
   const routeChange = () => {
@@ -89,13 +122,30 @@ function Tasks() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <TodoButton onClick={postTodo}>Add</TodoButton>
+        <Button onClick={() => setActive(true)}>Create new Todo</Button>
+        <div>
+          <Modal
+            active={active}
+            hideModal={() => setActive(false)}
+            footer={
+              <Button
+                onClick={() => {
+                  postTodo();
+                  addProject();
+                }}
+              >
+                Create
+              </Button>
+            }
+          />
+        </div>
+
         <TodoList>
           {todos.map((todo) => (
-            <li key={todo.id}>
+            <TodoListBar key={todo.id}>
               {todo.title}
               <TodoButton onClick={() => deleteTodo(todo.id)}>Del</TodoButton>
-            </li>
+            </TodoListBar>
           ))}
         </TodoList>
       </section>

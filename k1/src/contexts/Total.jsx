@@ -1,14 +1,18 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 export const TotalContext = createContext();
 
 export const TotalProvider = ({ children }) => {
   const [input, setInput] = useState("");
+  const [input2, setInput2] = useState("");
   const [projects, setProjects] = useState([]);
   const [todos, setTodos] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
   const [date, setDate] = useState(new Date());
+  const [time, setTime] = React.useState(0);
+  const [timerOn, setTimerOn] = React.useState(false);
+  const [active, setActive] = useState(false);
 
   //PROJECTS
   const getProjects = async () => {
@@ -65,6 +69,8 @@ export const TotalProvider = ({ children }) => {
         addProject,
         input,
         setInput,
+        input2,
+        setInput2,
         todos,
         setTodos,
         getTodos,
@@ -74,6 +80,12 @@ export const TotalProvider = ({ children }) => {
         setStartDate,
         date,
         setDate,
+        time,
+        setTime,
+        timerOn,
+        setTimerOn,
+        active,
+        setActive,
       }}
     >
       {children}

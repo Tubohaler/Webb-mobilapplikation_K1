@@ -22,7 +22,7 @@ const ModuleName = styled.h1`
 
 const ButtonDiv = styled.div`
   display: flex;
-  margin-top: -14em;
+  margin-top: -7em;
 `;
 
 const Buttons = styled.button`
@@ -48,6 +48,14 @@ const InputField = styled.input`
 const TodoButton = styled.button`
   font-size: 0.9em;
   margin: 0.2em;
+`;
+
+const TodoListBar = styled.li`
+  background-color: white;
+  color: black;
+  border-radius: 4px;
+  border-radius: 4px;
+  margin: 2px;
 `;
 
 function Projects() {
@@ -82,12 +90,12 @@ function Projects() {
         <TodoButton onClick={addProject}>Add</TodoButton>
         <ul>
           {projects.map((project) => (
-            <li key={project.id}>
+            <TodoListBar key={project.id}>
               {project.name}
               <TodoButton onClick={() => deleteProject(project.id)}>
                 Del
               </TodoButton>
-            </li>
+            </TodoListBar>
           ))}
         </ul>
       </section>

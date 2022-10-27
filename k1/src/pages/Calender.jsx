@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useTotals } from "../contexts/Total";
-
 import DatePicker from "react-datepicker";
 import Calendar from "react-calendar";
 
