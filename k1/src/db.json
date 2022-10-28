@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Bygga hemsida",
-      "color": "#4E0E9F"
+      "color": "red"
     },
     {
       "name": "Skaffa F-skattesedel",
@@ -11,14 +11,9 @@
       "id": 2
     },
     {
-      "name": "sd",
+      "name": "kjkb",
       "color": "#4E0E9F",
       "id": 3
-    },
-    {
-      "name": "sd",
-      "color": "#4E0E9F",
-      "id": 4
     }
   ],
   "tasks": [
@@ -31,6 +26,10 @@
       "id": 2,
       "projectId": 1,
       "title": "Städa förrådet"
+    },
+    {
+      "title": "köpa socker",
+      "id": 3
     }
   ],
   "timelogs": [

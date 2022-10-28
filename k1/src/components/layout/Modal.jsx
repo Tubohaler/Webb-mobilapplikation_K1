@@ -105,7 +105,8 @@ const ModalName = styled.div`
 `;
 
 const Modal = ({ title, footer, children, active, hideModal }) => {
-  const { input, setInput, input2, setInput2, deleteTodo } = useTotals();
+  const { input, setInput, input2, setInput2, deleteTodo, addProject } =
+    useTotals();
 
   return (
     <Fragment>
@@ -135,7 +136,9 @@ const Modal = ({ title, footer, children, active, hideModal }) => {
                 required
                 onChange={(e) => setInput2(e.target.value)}
               />
-              <NameLabel for="favcolor">Select your favorite color:</NameLabel>
+              <NameLabel onChange={(e) => addProject(e.project.color)}>
+                Select your favorite color:
+              </NameLabel>
               <input type="color" />
             </ModalInputDiv>
             <ModalBody>{children}</ModalBody>

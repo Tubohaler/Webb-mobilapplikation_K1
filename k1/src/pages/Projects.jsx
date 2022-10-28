@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useEffect } from "react";
 import { useTotals } from "../contexts/Total";
 
 const HeaderDiv = styled.header`
@@ -10,8 +9,8 @@ const HeaderDiv = styled.header`
   width: 100vw;
   left: 0;
   background-color: #ef6e26;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 `;
 
 const ModuleName = styled.h1`
@@ -22,7 +21,7 @@ const ModuleName = styled.h1`
 
 const ButtonDiv = styled.div`
   display: flex;
-  margin-top: -7em;
+  margin-top: -3em;
 `;
 
 const Buttons = styled.button`
@@ -53,14 +52,38 @@ const TodoButton = styled.button`
 const TodoListBar = styled.li`
   background-color: white;
   color: black;
-  border-radius: 4px;
-  border-radius: 4px;
-  margin: 2px;
+  border-radius: 0px 7px 7px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em;
+`;
+
+const TodoUL = styled.ul`
+  list-style: none;
+  align-content: space-between;
+  flex-wrap: nowrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: stretch;
+`;
+
+const TodoColor = styled.div`
+  background-color: ${(props) => props.color};
+  height: 3.7em;
 `;
 
 function Projects() {
-  const { projects, getProjects, deleteProject, addProject, input, setInput } =
-    useTotals();
+  const {
+    projects,
+    getProjects,
+    deleteProject,
+    addProject,
+    input,
+    setInput,
+    getTodos,
+  } = useTotals();
 
   const navigate = useNavigate();
   const routeChange = () => {
@@ -70,6 +93,7 @@ function Projects() {
 
   useEffect(() => {
     getProjects();
+    getTodos();
   }, []);
 
   return (
@@ -87,17 +111,18 @@ function Projects() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <TodoButton onClick={addProject}>Add</TodoButton>
-        <ul>
+        <TodoButton onClick={addProject}>Add Project</TodoButton>
+        <TodoUL>
           {projects.map((project) => (
             <TodoListBar key={project.id}>
+              <TodoColor color={project.color}>....</TodoColor>
               {project.name}
               <TodoButton onClick={() => deleteProject(project.id)}>
                 Del
               </TodoButton>
             </TodoListBar>
           ))}
-        </ul>
+        </TodoUL>
       </section>
     </div>
   );

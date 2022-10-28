@@ -24,7 +24,7 @@ const ModuleName = styled.h1`
 
 const ButtonDiv = styled.div`
   display: flex;
-  margin-top: -13rem;
+  margin-top: -15rem;
 `;
 
 const Buttons = styled.button`
@@ -66,9 +66,16 @@ const TodoList = styled.ul`
 const TodoListBar = styled.li`
   background-color: white;
   color: black;
-  border-radius: 4px;
-  border-radius: 4px;
-  margin: 2px;
+  border-radius: 0px 7px 7px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em;
+`;
+
+const TodoColor = styled.div`
+  background-color: ${(props) => props.color};
+  height: 3.7em;
 `;
 
 const Button = styled.button`
@@ -95,6 +102,8 @@ function Tasks() {
     active,
     setActive,
     addProject,
+    project,
+    getProjects,
   } = useTotals();
 
   const navigate = useNavigate();
@@ -117,11 +126,6 @@ function Tasks() {
         <Buttons disabled>Todos</Buttons>
       </ButtonDiv>
       <section>
-        <InputField
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
         <Button onClick={() => setActive(true)}>Create new Todo</Button>
         <div>
           <Modal
@@ -139,10 +143,10 @@ function Tasks() {
             }
           />
         </div>
-
         <TodoList>
           {todos.map((todo) => (
             <TodoListBar key={todo.id}>
+              <TodoColor color={getProjects.color}>....</TodoColor>
               {todo.title}
               <TodoButton onClick={() => deleteTodo(todo.id)}>Del</TodoButton>
             </TodoListBar>

@@ -9,7 +9,6 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // getData();
     navigate("timer");
   }, []);
 
