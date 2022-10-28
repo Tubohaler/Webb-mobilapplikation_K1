@@ -105,8 +105,7 @@ const ModalName = styled.div`
 `;
 
 const Modal = ({ title, footer, children, active, hideModal }) => {
-  const { input, setInput, input2, setInput2, deleteTodo, addProject } =
-    useTotals();
+  const { input, setInput, input2, setInput2, addProject } = useTotals();
 
   return (
     <Fragment>

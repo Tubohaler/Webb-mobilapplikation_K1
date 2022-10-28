@@ -57,10 +57,11 @@ const TodoList = styled.ul`
 const TodoListBar = styled.li`
   background-color: white;
   color: black;
-  border-radius: 4px;
-  border-radius: 4px;
-  margin: 10px;
-  padding: 7px;
+  border-radius: 0px 7px 7px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em;
 `;
 
 const TimerSpan = styled.button`
@@ -68,18 +69,20 @@ const TimerSpan = styled.button`
 `;
 
 const TimerBox = styled.section`
-  position: absolute;
+  /* position: absolute; */
 `;
 
 const TimerBackground = styled.section`
-  background-color: white;
-  position: relative;
+  /* background-color: white; */
+  /* position: relative; */
 `;
 
 function TimeKeeper() {
-  const { time, setTime, timerOn, setTimerOn, todos } = useTotals();
+  const { time, setTime, timerOn, setTimerOn, todos, getTodos, postTimelog } =
+    useTotals();
 
   useEffect(() => {
+    getTodos();
     let interval = null;
 
     if (timerOn) {
@@ -108,23 +111,6 @@ function TimeKeeper() {
             </TimerSpan>
             <TimerSpan>{("0" + ((time / 10) % 100)).slice(-2)}</TimerSpan>
           </TimerDiv>
-
-          <div id="buttons">
-            {!timerOn && time === 0 && (
-              <TimerButtons onClick={() => setTimerOn(true)}>
-                Start
-              </TimerButtons>
-            )}
-            {timerOn && <button onClick={() => setTimerOn(false)}>Stop</button>}
-            {!timerOn && time > 0 && (
-              <TimerButtons onClick={() => setTime(0)}>Reset</TimerButtons>
-            )}
-            {!timerOn && time > 0 && (
-              <TimerButtons onClick={() => setTimerOn(true)}>
-                Resume
-              </TimerButtons>
-            )}
-          </div>
         </TimerBox>
       </TimerBackground>
       <h2>Todos</h2>
@@ -132,6 +118,29 @@ function TimeKeeper() {
         {todos.map((todo) => (
           <TodoListBar key={todo.id}>
             {todo.title}
+            <div id="buttons">
+              {!timerOn && time === 0 && (
+                <TimerButtons
+                  onClick={() => {
+                    setTimerOn(true);
+                    postTimelog(Date.now());
+                  }}
+                >
+                  Start
+                </TimerButtons>
+              )}
+              {timerOn && (
+                <button onClick={() => setTimerOn(false)}>Stop</button>
+              )}
+              {!timerOn && time > 0 && (
+                <TimerButtons onClick={() => setTime(0)}>Reset</TimerButtons>
+              )}
+              {!timerOn && time > 0 && (
+                <TimerButtons onClick={() => setTimerOn(true)}>
+                  Resume
+                </TimerButtons>
+              )}
+            </div>
             <TodoButton onClick={() => deleteTodo(todo.id)}>Del</TodoButton>
           </TodoListBar>
         ))}

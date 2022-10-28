@@ -1,49 +1,35 @@
 {
   "projects": [
     {
-      "id": 1,
-      "name": "Bygga hemsida",
-      "color": "red"
-    },
-    {
       "name": "Skaffa F-skattesedel",
       "color": "#4E0E9F",
       "id": 2
     },
     {
-      "name": "kjkb",
+      "name": "Hushåll",
       "color": "#4E0E9F",
       "id": 3
+    },
+    {
+      "name": "Införskaffa bast",
+      "color": "#4E0E9F",
+      "id": 4
     }
   ],
   "tasks": [
     {
-      "id": 1,
-      "projectId": 1,
-      "title": "Hitta en webbdesigner"
-    },
-    {
-      "id": 2,
-      "projectId": 1,
-      "title": "Städa förrådet"
-    },
-    {
       "title": "köpa socker",
       "id": 3
+    },
+    {
+      "title": "Införskaffa bast",
+      "id": 6
     }
   ],
   "timelogs": [
     {
-      "id": "firstTask",
-      "taskId": 1,
-      "start": "2022-10-12T10:49:33.081Z",
-      "end": "2020-10-12T10:49:33.081Z"
-    },
-    {
-      "id": "secondTask",
-      "taskId": 2,
-      "start": "2022-10-12T10:49:33.081Z",
-      "end": "2021-10-12T10:49:33.081Z"
+      "start": "",
+      "id": "OHR-zZw"
     }
   ]
 }

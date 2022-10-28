@@ -13,6 +13,7 @@ export const TotalProvider = ({ children }) => {
   const [time, setTime] = React.useState(0);
   const [timerOn, setTimerOn] = React.useState(false);
   const [active, setActive] = useState(false);
+  const [timelog, setTimelog] = useState([]);
 
   //PROJECTS
   const getProjects = async () => {
@@ -30,14 +31,12 @@ export const TotalProvider = ({ children }) => {
       name: input,
       color: "#4E0E9F",
     });
-    console.log(data);
     getProjects();
   };
 
   // TODOS
   const getTodos = async () => {
     const { data } = await axios.get("http://localhost:3000/tasks");
-    console.log(data);
     setTodos(data);
   };
 
@@ -51,6 +50,24 @@ export const TotalProvider = ({ children }) => {
       title: input,
     });
     getTodos();
+  };
+
+  // TIMER
+  const getAllTimelogs = async () => {
+    const { data } = await axios.get("http://localhost:3000/timelogs");
+    setTimelog(data);
+  };
+
+  const postTimelog = async () => {
+    const { data } = await axios.post("http://localhost:3000/timelogs", {
+      start: input,
+    });
+    getAllTimelogs();
+  };
+
+  const deleteTimelog = async (id) => {
+    await axios.delete(`http://localhost:3000/timelogs/${id}`);
+    getAllTimelogs();
   };
 
   // Calender
@@ -86,6 +103,7 @@ export const TotalProvider = ({ children }) => {
         setTimerOn,
         active,
         setActive,
+        postTimelog,
       }}
     >
       {children}

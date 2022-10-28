@@ -92,17 +92,13 @@ const Button = styled.button`
 
 function Tasks() {
   const {
-    input,
-    setInput,
     todos,
-    setTodos,
     getTodos,
     deleteTodo,
     postTodo,
     active,
     setActive,
     addProject,
-    project,
     getProjects,
   } = useTotals();
 

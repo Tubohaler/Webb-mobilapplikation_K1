@@ -21,7 +21,7 @@ const ModuleName = styled.h1`
 
 const ButtonDiv = styled.div`
   display: flex;
-  margin-top: -3em;
+  margin-top: -1rem;
 `;
 
 const Buttons = styled.button`
@@ -117,9 +117,9 @@ function Projects() {
             <TodoListBar key={project.id}>
               <TodoColor color={project.color}>....</TodoColor>
               {project.name}
-              <TodoButton onClick={() => deleteProject(project.id)}>
-                Del
-              </TodoButton>
+              <TodoButton
+                onClick={() => deleteProject(project.id)}
+              ></TodoButton>
             </TodoListBar>
           ))}
         </TodoUL>
