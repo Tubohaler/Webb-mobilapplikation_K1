@@ -9,9 +9,6 @@ export const TotalProvider = ({ children }) => {
   const [projects, setProjects] = useState([]);
   const [todos, setTodos] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
-  const [date, setDate] = useState(new Date());
-  const [time, setTime] = React.useState(0);
-  const [timerOn, setTimerOn] = React.useState(false);
   const [active, setActive] = useState(false);
   const [timelog, setTimelog] = useState([]);
 
@@ -58,9 +55,11 @@ export const TotalProvider = ({ children }) => {
     setTimelog(data);
   };
 
-  const postTimelog = async () => {
+  const postTimelog = async (date, taskId, time) => {
     const { data } = await axios.post("http://localhost:3000/timelogs", {
-      start: input,
+      start: date,
+      taskId,
+      time,
     });
     getAllTimelogs();
   };
@@ -95,15 +94,12 @@ export const TotalProvider = ({ children }) => {
         postTodo,
         startDate,
         setStartDate,
-        date,
-        setDate,
-        time,
-        setTime,
-        timerOn,
-        setTimerOn,
         active,
         setActive,
+        getAllTimelogs,
         postTimelog,
+        timelog,
+        deleteTimelog,
       }}
     >
       {children}

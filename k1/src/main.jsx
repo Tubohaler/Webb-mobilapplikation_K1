@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import TimeKeeper from "./pages/TimeKeeper";
-import Calender from "./pages/Calender";
+import CalenderPage from "./pages/CalenderPage";
 import Overview from "./pages/Overview";
 import Projects from "./pages/Projects";
 import Tasks from "./pages/Tasks";
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path: "calender",
-        element: <Calender />,
+        element: <CalenderPage />,
       },
       {
         path: "overview",

@@ -117,9 +117,9 @@ function Projects() {
             <TodoListBar key={project.id}>
               <TodoColor color={project.color}>....</TodoColor>
               {project.name}
-              <TodoButton
-                onClick={() => deleteProject(project.id)}
-              ></TodoButton>
+              <TodoButton onClick={() => deleteProject(project.id)}>
+                Delete
+              </TodoButton>
             </TodoListBar>
           ))}
         </TodoUL>

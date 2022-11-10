@@ -144,7 +144,9 @@ function Tasks() {
             <TodoListBar key={todo.id}>
               <TodoColor color={getProjects.color}>....</TodoColor>
               {todo.title}
-              <TodoButton onClick={() => deleteTodo(todo.id)}>Del</TodoButton>
+              <TodoButton onClick={() => deleteTodo(todo.id)}>
+                Delete
+              </TodoButton>
             </TodoListBar>
           ))}
         </TodoList>

@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useTotals } from "../contexts/Total";
-import DatePicker from "react-datepicker";
 import Calendar from "react-calendar";
 
 import styled from "styled-components";
-import "react-datepicker/dist/react-datepicker.css";
 
 const HeaderDiv = styled.header`
   /* position: fixed; */
@@ -38,18 +36,30 @@ const TodoList = styled.ul`
   height: 19em;
 `;
 
-function Calender() {
-  const { todos, getTodos, startDate, setStartDate, date, setDate } =
-    useTotals();
+function CalenderPage() {
+  const [date, setDate] = useState(new Date());
+  const {
+    todos,
+    getTodos,
+    startDate,
+    setStartDate,
+    timelog,
+    getAllTimelogs,
+    deleteTimelog,
+  } = useTotals();
 
   const onChange = (date) => {
     setDate(date);
   };
 
+  function removeTimelog(id) {
+    deleteTimelog(id);
+  }
+
   useEffect(() => {
     getTodos();
+    getAllTimelogs();
   }, []);
-
   return (
     <div>
       <HeaderDiv>
@@ -57,20 +67,32 @@ function Calender() {
       </HeaderDiv>
       <CalenderStyle>
         <Calendar onChange={onChange} value={date} />
-        <DatePicker
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-        />
       </CalenderStyle>
       <section>
         <TodoList>
-          {todos.map((todo) => (
-            <li key={todo.id}>{todo.title}</li>
-          ))}
+          {timelog
+            .filter((log) => {
+              const target = new Date(log.start);
+              const selectedDate = new Date(date);
+              return (
+                target.getMonth() === selectedDate.getMonth() &&
+                target.getDate() === selectedDate.getDate() &&
+                target.getFullYear() === selectedDate.getFullYear()
+              );
+            })
+            .map((log) => {
+              const targetTodo = todos.find((todo) => todo.id === log.taskId);
+              return (
+                <li key={log.id}>
+                  {targetTodo.title}---{log.time}seconds
+                  <button onClick={() => removeTimelog(log.id)}>delete</button>
+                </li>
+              );
+            })}
         </TodoList>
       </section>
     </div>
   );
 }
 
-export default Calender;
+export default CalenderPage;

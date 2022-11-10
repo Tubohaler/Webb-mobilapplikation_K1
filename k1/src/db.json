@@ -1,16 +1,6 @@
 {
   "projects": [
     {
-      "name": "Skaffa F-skattesedel",
-      "color": "#4E0E9F",
-      "id": 2
-    },
-    {
-      "name": "Hushåll",
-      "color": "#4E0E9F",
-      "id": 3
-    },
-    {
       "name": "Införskaffa bast",
       "color": "#4E0E9F",
       "id": 4
@@ -20,16 +10,20 @@
     {
       "title": "köpa socker",
       "id": 3
-    },
-    {
-      "title": "Införskaffa bast",
-      "id": 6
     }
   ],
   "timelogs": [
     {
-      "start": "",
-      "id": "OHR-zZw"
+      "start": 1668091991501,
+      "taskId": 3,
+      "time": 0,
+      "id": "L_mi47b"
+    },
+    {
+      "start": 1668092314344,
+      "taskId": 3,
+      "time": 0,
+      "id": "ruZGWSr"
     }
   ]
 }
